@@ -1,7 +1,7 @@
 import {
-    Column,
-    Entity,
-    ManyToOne
+  Column,
+  Entity,
+  ManyToOne
 } from 'typeorm';
 
 import Doctor from './Doctor';
@@ -16,27 +16,27 @@ import Patient from './Patient';
  */
 @Entity()
 export default class Appointment {
-    @Column()
-    date: Date;
+  @Column()
+  date!: Date;
 
-    @ManyToOne(
-        type => Doctor,
-        doctor => doctor.appointments,
-        {
-            primary: true, // Use this as part of composite primary key (no need for auto inc primary key).
-            nullable: false // Can't use as part of composite primary key without this.
-        }
-    )
-    doctor: Doctor;
+  @ManyToOne(
+    type => Doctor,
+    doctor => doctor.appointments,
+    {
+      primary: true, // Use this as part of composite primary key (no need for auto inc primary key).
+      nullable: false // Can't use as part of composite primary key without this.
+    }
+  )
+  doctor!: Doctor;
 
-    @ManyToOne(
-        type => Patient,
-        patient => patient.appointments,
-        {
-            // Second part of composite primary key.
-            primary: true,
-            nullable: false
-        }      
-    )
-    patient: Patient;
+  @ManyToOne(
+    type => Patient,
+    patient => patient.appointments,
+    {
+      // Second part of composite primary key.
+      primary: true,
+      nullable: false
+    }
+  )
+  patient!: Patient;
 }

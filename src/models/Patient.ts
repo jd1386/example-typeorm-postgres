@@ -1,8 +1,8 @@
 import {
-    Column,
-    Entity,
-    OneToMany,
-    PrimaryGeneratedColumn
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn
 } from 'typeorm';
 
 import Appointment from './Appointment';
@@ -14,15 +14,15 @@ import Doctor from './Doctor';
  */
 @Entity()
 export default class Patient {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id!: number;
 
-    @Column()
-    name: string;
+  @Column()
+  name!: string;
 
-    @OneToMany(
-        type => Appointment,
-        appointment => appointment.patient
-    )
-    appointments: Appointment[];
+  @OneToMany(
+    type => Appointment,
+    appointment => appointment.patient
+  )
+  appointments!: Appointment[];
 }
